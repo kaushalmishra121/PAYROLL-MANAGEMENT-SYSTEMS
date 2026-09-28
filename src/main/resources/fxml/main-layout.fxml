@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.payroll.controller.MainLayoutController"
+      styleClass="app-root" stylesheets="@../css/sidebar-theme.css"
+      spacing="0" prefHeight="860.0" prefWidth="1360.0">
+
+    <!-- ===== LEFT SIDEBAR ===== -->
+    <VBox styleClass="sidebar" prefWidth="220" spacing="0">
+
+        <!-- Logo -->
+        <VBox styleClass="sidebar-logo-area" spacing="2">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <StackPane prefWidth="36" prefHeight="36" styleClass="logo-icon">
+                    <Label text="P" styleClass="logo-letter"/>
+                </StackPane>
+                <VBox spacing="0">
+                    <Label text="PAYROLL PRO" styleClass="brand-name"/>
+                    <Label text="Enterprise Suite v1.0" styleClass="brand-sub"/>
+                </VBox>
+            </HBox>
+        </VBox>
+
+        <!-- Divider -->
+        <Separator styleClass="sidebar-divider"/>
+
+        <!-- OVERVIEW section -->
+        <VBox styleClass="nav-section" spacing="2">
+            <Label text="OVERVIEW" styleClass="nav-section-label"/>
+            <Button fx:id="btnNavDashboard" text="Dashboard" onAction="#showDashboard"
+                    styleClass="nav-item, nav-item-active" maxWidth="Infinity">
+                <graphic>
+                    <Label text="⊞" styleClass="nav-icon"/>
+                </graphic>
+            </Button>
+        </VBox>
+
+        <!-- WORKFORCE section -->
+        <VBox styleClass="nav-section" spacing="2">
+            <Label text="WORKFORCE" styleClass="nav-section-label"/>
+            <Button fx:id="btnNavEmployees" text="Employees" onAction="#showEmployees"
+                    styleClass="nav-item" maxWidth="Infinity">
+                <graphic><Label text="👤" styleClass="nav-icon"/></graphic>
+            </Button>
+            <Button fx:id="btnNavDepartments" text="Departments" onAction="#showDepartments"
+                    styleClass="nav-item" maxWidth="Infinity">
+                <graphic><Label text="⊡" styleClass="nav-icon"/></graphic>
+            </Button>
+            <Button fx:id="btnNavAttendance" text="Attendance" onAction="#showAttendance"
+                    styleClass="nav-item" maxWidth="Infinity">
+                <graphic><Label text="☑" styleClass="nav-icon"/></graphic>
+            </Button>
+            <Button fx:id="btnNavLeaves" text="Leave Requests" onAction="#showLeaves"
+                    styleClass="nav-item" maxWidth="Infinity">
+                <graphic><Label text="✎" styleClass="nav-icon"/></graphic>
+            </Button>
+        </VBox>
+
+        <!-- PAYROLL & FINANCE section -->
+        <VBox styleClass="nav-section" spacing="2">
+            <Label text="PAYROLL &amp; FINANCE" styleClass="nav-section-label"/>
+            <Button fx:id="btnNavPayroll" text="Payroll Runs" onAction="#showPayroll"
+                    styleClass="nav-item" maxWidth="Infinity">
+                <graphic><Label text="◈" styleClass="nav-icon"/></graphic>
+            </Button>
+            <Button fx:id="btnNavReports" text="Reports &amp; Payslips" onAction="#showReports"
+                    styleClass="nav-item" maxWidth="Infinity">
+                <graphic><Label text="⊞" styleClass="nav-icon"/></graphic>
+            </Button>
+        </VBox>
+
+        <!-- ADMIN section (shown only for admin role) -->
+        <VBox fx:id="adminNavSection" styleClass="nav-section" spacing="2">
+            <Label text="ADMINISTRATION" styleClass="nav-section-label"/>
+            <Button fx:id="btnNavUsers" text="User Management" onAction="#showUsers"
+                    styleClass="nav-item" maxWidth="Infinity">
+                <graphic><Label text="⚙" styleClass="nav-icon"/></graphic>
+            </Button>
+        </VBox>
+
+        <!-- Spacer -->
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <!-- Separator -->
+        <Separator styleClass="sidebar-divider"/>
+
+        <!-- User profile footer -->
+        <VBox styleClass="sidebar-user-footer" spacing="8">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <StackPane prefWidth="32" prefHeight="32" styleClass="user-avatar">
+                    <Label fx:id="lblUserInitial" text="U" styleClass="user-initial"/>
+                </StackPane>
+                <VBox spacing="1" HBox.hgrow="ALWAYS">
+                    <Label fx:id="lblUserName" text="User" styleClass="user-name"/>
+                    <Label fx:id="lblUserRole" text="Role" styleClass="user-role"/>
+                </VBox>
+            </HBox>
+            <HBox spacing="6">
+                <Button fx:id="btnThemeToggle" text="☀ Light" onAction="#toggleTheme"
+                        styleClass="sidebar-btn-sm"/>
+                <Button text="⏏ Logout" onAction="#handleLogout"
+                        styleClass="sidebar-btn-sm, sidebar-btn-logout"/>
+            </HBox>
+        </VBox>
+    </VBox>
+
+    <!-- ===== MAIN CONTENT AREA ===== -->
+    <VBox HBox.hgrow="ALWAYS" spacing="0" styleClass="main-area">
+
+        <!-- Top header bar -->
+        <HBox styleClass="content-header" alignment="CENTER_LEFT" spacing="16">
+            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                <Label fx:id="lblHeaderTitle" text="Executive Dashboard" styleClass="header-title"/>
+                <Label fx:id="lblHeaderSubtitle" text="Real-time employee metrics and payroll analytics" styleClass="header-sub"/>
+            </VBox>
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Label fx:id="lblDbStatus" text="● DB Connected" styleClass="db-badge"/>
+                <Label fx:id="lblClock" text="—" styleClass="header-date"/>
+            </HBox>
+        </HBox>
+
+        <!-- Dynamic content pane -->
+        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="content-scroll">
+            <StackPane fx:id="contentArea" VBox.vgrow="ALWAYS" styleClass="content-body"/>
+        </ScrollPane>
+    </VBox>
+
+</HBox>

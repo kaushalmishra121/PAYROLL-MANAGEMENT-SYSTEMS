@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.payroll.controller.ReportController"
+            fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-padding: 0;">
+
+    <VBox spacing="16" style="-fx-padding: 4;">
+        
+        <!-- Header Introduction -->
+        <VBox styleClass="card" spacing="6">
+            <Label text="Financial &amp; Workforce Reporting Center" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: -color-text-main;"/>
+            <Label text="Generate standard audit registers, employee directories, attendance logs, and high-fidelity PDF payslips."
+                   style="-fx-text-fill: -color-text-muted; -fx-font-size: 12;"/>
+        </VBox>
+
+        <!-- Reports Grid -->
+        <GridPane hgap="16" vgap="16">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50"/>
+                <ColumnConstraints percentWidth="50"/>
+            </columnConstraints>
+
+            <!-- REPORT 1: Individual PDF Payslip Generator -->
+            <VBox styleClass="card" spacing="12" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <StackPane prefWidth="36" prefHeight="36" styleClass="kpi-icon-box, icon-blue">
+                        <Label text="📄" style="-fx-font-size: 16;"/>
+                    </StackPane>
+                    <VBox spacing="2">
+                        <Label text="Individual PDF Payslip" style="-fx-font-weight: bold; -fx-font-size: 14; -fx-text-fill: -color-text-main;"/>
+                        <Label text="Official employee monthly payslip with earnings breakdown" style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;"/>
+                    </VBox>
+                </HBox>
+
+                <VBox spacing="10" style="-fx-padding: 8 0;">
+                    <VBox spacing="4">
+                        <Label text="Select Employee:"/>
+                        <ComboBox fx:id="cmbPayslipEmployee" promptText="Choose employee..." maxWidth="Infinity"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Select Payroll Period:"/>
+                        <ComboBox fx:id="cmbPayslipPeriod" promptText="Choose period..." maxWidth="Infinity"/>
+                    </VBox>
+                </VBox>
+
+                <Button text="⚡ Generate PDF Payslip" onAction="#handleGeneratePdfPayslip" styleClass="btn-primary" maxWidth="Infinity" prefHeight="38"/>
+            </VBox>
+
+            <!-- REPORT 2: Monthly Payroll Register CSV -->
+            <VBox styleClass="card" spacing="12" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <StackPane prefWidth="36" prefHeight="36" styleClass="kpi-icon-box, icon-green">
+                        <Label text="📊" style="-fx-font-size: 16;"/>
+                    </StackPane>
+                    <VBox spacing="2">
+                        <Label text="Monthly Payroll Register" style="-fx-font-weight: bold; -fx-font-size: 14; -fx-text-fill: -color-text-main;"/>
+                        <Label text="Comprehensive itemized summary for accounting &amp; tax audits" style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;"/>
+                    </VBox>
+                </HBox>
+
+                <VBox spacing="10" style="-fx-padding: 8 0;">
+                    <VBox spacing="4">
+                        <Label text="Select Payroll Run:"/>
+                        <ComboBox fx:id="cmbRegisterRun" promptText="Choose payroll run..." maxWidth="Infinity"/>
+                    </VBox>
+                    <Label text="Includes: Basic, HRA, Allowances, PF, Prof Tax, TDS, Unpaid Loss, Net Pay" style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;"/>
+                </VBox>
+
+                <Button text="📥 Export Register (CSV)" onAction="#handleExportPayrollRegister" styleClass="btn-secondary" maxWidth="Infinity" prefHeight="38"/>
+            </VBox>
+
+            <!-- REPORT 3: Employee Master Directory CSV -->
+            <VBox styleClass="card" spacing="12" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <StackPane prefWidth="36" prefHeight="36" styleClass="kpi-icon-box, icon-purple">
+                        <Label text="👥" style="-fx-font-size: 16;"/>
+                    </StackPane>
+                    <VBox spacing="2">
+                        <Label text="Employee Master Directory" style="-fx-font-weight: bold; -fx-font-size: 14; -fx-text-fill: -color-text-main;"/>
+                        <Label text="Full workforce roster with department, bank, and salary data" style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;"/>
+                    </VBox>
+                </HBox>
+
+                <VBox spacing="6" style="-fx-padding: 16 0;">
+                    <Label text="Includes active and inactive staff, contact details, bank accounts, and designations." style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;"/>
+                </VBox>
+
+                <Button text="📥 Export Directory (CSV)" onAction="#handleExportEmployeeDirectory" styleClass="btn-secondary" maxWidth="Infinity" prefHeight="38"/>
+            </VBox>
+
+            <!-- REPORT 4: Attendance & Leave Log CSV -->
+            <VBox styleClass="card" spacing="12" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <StackPane prefWidth="36" prefHeight="36" styleClass="kpi-icon-box, icon-amber">
+                        <Label text="📅" style="-fx-font-size: 16;"/>
+                    </StackPane>
+                    <VBox spacing="2">
+                        <Label text="Attendance &amp; Leave Register" style="-fx-font-weight: bold; -fx-font-size: 14; -fx-text-fill: -color-text-main;"/>
+                        <Label text="Monthly working hours, leave balances, and unpaid days log" style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;"/>
+                    </VBox>
+                </HBox>
+
+                <VBox spacing="10" style="-fx-padding: 8 0;">
+                    <HBox spacing="10">
+                        <ComboBox fx:id="cmbAttMonth" promptText="Month" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                        <ComboBox fx:id="cmbAttYear" promptText="Year" prefWidth="100"/>
+                    </HBox>
+                </VBox>
+
+                <Button text="📥 Export Attendance (CSV)" onAction="#handleExportAttendance" styleClass="btn-secondary" maxWidth="Infinity" prefHeight="38"/>
+            </VBox>
+        </GridPane>
+
+    </VBox>
+</ScrollPane>

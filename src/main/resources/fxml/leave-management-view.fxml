@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.payroll.controller.LeaveManagementController"
+      spacing="16" style="-fx-padding: 4;">
+
+    <!-- TOP FILTER TOOLBAR -->
+    <HBox spacing="12" alignment="CENTER_LEFT" styleClass="card" style="-fx-padding: 12 16;">
+        <Label text="Filter by Status:" style="-fx-font-weight: bold; -fx-text-fill: -color-text-main;"/>
+        <ComboBox fx:id="cmbStatusFilter" prefWidth="180" prefHeight="38"/>
+
+        <Button text="Filter" onAction="#loadLeaves" styleClass="btn-secondary" prefHeight="38"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button text="📥 Export CSV" onAction="#handleExportCsv" styleClass="btn-secondary" prefHeight="38"/>
+        <Button text="➕ Apply Leave" onAction="#showApplyLeaveDialog" styleClass="btn-primary" prefHeight="38"/>
+    </HBox>
+
+    <!-- LEAVE REQUESTS TABLE -->
+    <VBox styleClass="card" VBox.vgrow="ALWAYS" spacing="12">
+        <HBox alignment="CENTER_LEFT">
+            <Label fx:id="lblLeaveSummary" text="Leave Applications" style="-fx-font-weight: bold; -fx-font-size: 14; -fx-text-fill: -color-text-main;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Approved unpaid leaves are factored into payroll deductions automatically" style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;"/>
+        </HBox>
+
+        <TableView fx:id="tblLeaves" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colLeaveCode" text="Emp ID" prefWidth="90"/>
+                <TableColumn fx:id="colLeaveName" text="Employee Name" prefWidth="150"/>
+                <TableColumn fx:id="colLeaveDept" text="Department" prefWidth="130"/>
+                <TableColumn fx:id="colLeaveType" text="Leave Type" prefWidth="110"/>
+                <TableColumn fx:id="colLeaveStart" text="From" prefWidth="95"/>
+                <TableColumn fx:id="colLeaveEnd" text="To" prefWidth="95"/>
+                <TableColumn fx:id="colLeaveDays" text="Days" prefWidth="60"/>
+                <TableColumn fx:id="colLeaveReason" text="Reason" prefWidth="180"/>
+                <TableColumn fx:id="colLeaveStatus" text="Status" prefWidth="100"/>
+                <TableColumn fx:id="colLeaveActions" text="Review Actions" prefWidth="170"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+    </VBox>
+
+</VBox>

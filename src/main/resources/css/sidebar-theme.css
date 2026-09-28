@@ -1,0 +1,457 @@
+/* =============================================================
+   Enterprise Payroll Management System — Sidebar Dark Theme
+   Matching reference screenshot palette:
+     Sidebar bg:       #1a2332  (dark navy)
+     Content bg:       #1e2a3a  (slightly lighter navy)
+     Card bg:          #243447  (card panels)
+     Active nav:       #2563eb  (electric blue)
+     Accent green:     #10b981
+     Accent amber:     #f59e0b
+     Text primary:     #e2e8f0
+     Text muted:       #94a3b8
+     Text label:       #64748b
+   ============================================================= */
+
+/* ---- ROOT ---- */
+.app-root {
+    -fx-background-color: #1a2332;
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+}
+
+/* ============================================================
+   LEFT SIDEBAR
+   ============================================================ */
+.sidebar {
+    -fx-background-color: #1a2332;
+    -fx-pref-width: 220px;
+    -fx-min-width: 200px;
+    -fx-padding: 0;
+}
+
+.sidebar-logo-area {
+    -fx-padding: 20 16 16 16;
+}
+
+.logo-icon {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 8px;
+    -fx-alignment: CENTER;
+}
+
+.logo-letter {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.brand-name {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.brand-sub {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 10px;
+}
+
+.sidebar-divider {
+    -fx-background-color: #2d3f55;
+    -fx-pref-height: 1px;
+    -fx-border-color: transparent;
+    -fx-padding: 0 16;
+}
+
+/* ---- NAVIGATION ---- */
+.nav-section {
+    -fx-padding: 12 10 4 10;
+}
+
+.nav-section-label {
+    -fx-text-fill: #475569;
+    -fx-font-size: 9.5px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 1px;
+    -fx-padding: 0 6 4 6;
+}
+
+.nav-icon {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 14px;
+    -fx-min-width: 22px;
+}
+
+.nav-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-content-display: LEFT;
+    -fx-graphic-text-gap: 10;
+    -fx-padding: 9 12;
+    -fx-background-radius: 7px;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+}
+
+.nav-item:hover {
+    -fx-background-color: #243447;
+    -fx-text-fill: #e2e8f0;
+}
+
+.nav-item:hover .nav-icon {
+    -fx-text-fill: #e2e8f0;
+}
+
+.nav-item-active {
+    -fx-background-color: #2563eb !important;
+    -fx-text-fill: #ffffff !important;
+    -fx-font-weight: bold;
+}
+
+.nav-item-active .nav-icon {
+    -fx-text-fill: #ffffff !important;
+}
+
+.nav-item-active:hover {
+    -fx-background-color: #1d4ed8 !important;
+}
+
+/* ---- USER FOOTER ---- */
+.sidebar-user-footer {
+    -fx-padding: 12 14 16 14;
+    -fx-background-color: #152030;
+}
+
+.user-avatar {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 16px;
+    -fx-alignment: CENTER;
+}
+
+.user-initial {
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.user-name {
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.user-role {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 10px;
+}
+
+.sidebar-btn-sm {
+    -fx-background-color: #243447;
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 10px;
+    -fx-background-radius: 5px;
+    -fx-padding: 4 10;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+}
+
+.sidebar-btn-sm:hover {
+    -fx-background-color: #2d3f55;
+    -fx-text-fill: #e2e8f0;
+}
+
+.sidebar-btn-logout {
+    -fx-text-fill: #f87171;
+}
+
+.sidebar-btn-logout:hover {
+    -fx-background-color: #2d1b1b;
+    -fx-text-fill: #ef4444;
+}
+
+/* ============================================================
+   MAIN CONTENT AREA
+   ============================================================ */
+.main-area {
+    -fx-background-color: #1b2736;
+}
+
+.content-header {
+    -fx-background-color: #1a2332;
+    -fx-padding: 14 24;
+    -fx-border-color: transparent transparent #2d3f55 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-min-height: 64px;
+}
+
+.header-title {
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.header-sub {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 12px;
+}
+
+.db-badge {
+    -fx-background-color: #14532d;
+    -fx-text-fill: #4ade80;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 10;
+    -fx-background-radius: 12px;
+}
+
+.header-date {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 12px;
+}
+
+.content-scroll {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-padding: 0;
+}
+
+.content-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+
+.content-body {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+/* ============================================================
+   DASHBOARD KPI CARDS
+   ============================================================ */
+.kpi-card {
+    -fx-background-color: #243447;
+    -fx-background-radius: 10px;
+    -fx-padding: 16 18;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 8, 0, 0, 2);
+}
+
+.kpi-label {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 0.5px;
+}
+
+.kpi-value-big {
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 26px;
+    -fx-font-weight: 800;
+}
+
+.kpi-sub {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 11px;
+}
+
+.kpi-icon-box-blue {
+    -fx-background-color: #1e3a5f;
+    -fx-background-radius: 8px;
+    -fx-alignment: CENTER;
+}
+
+.kpi-icon-box-green {
+    -fx-background-color: #14532d;
+    -fx-background-radius: 8px;
+    -fx-alignment: CENTER;
+}
+
+.kpi-icon-box-amber {
+    -fx-background-color: #451a03;
+    -fx-background-radius: 8px;
+    -fx-alignment: CENTER;
+}
+
+.kpi-icon-box-purple {
+    -fx-background-color: #2e1065;
+    -fx-background-radius: 8px;
+    -fx-alignment: CENTER;
+}
+
+/* ============================================================
+   DASHBOARD CONTENT CARDS
+   ============================================================ */
+.dash-card {
+    -fx-background-color: #243447;
+    -fx-background-radius: 10px;
+    -fx-padding: 16 18;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 8, 0, 0, 2);
+}
+
+.card-heading {
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+/* ============================================================
+   DARK CHART STYLING
+   ============================================================ */
+.dark-chart {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.dark-chart .chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.dark-chart .chart-vertical-grid-lines {
+    -fx-stroke: #2d3f55;
+}
+
+.dark-chart .chart-horizontal-grid-lines {
+    -fx-stroke: #2d3f55;
+}
+
+.dark-chart .axis {
+    -fx-tick-label-fill: #94a3b8;
+    -fx-font-size: 10px;
+}
+
+.dark-chart .axis-label {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 10px;
+}
+
+.dark-chart .chart-legend {
+    -fx-background-color: transparent;
+    -fx-text-fill: #94a3b8;
+}
+
+.dark-chart .chart-legend-item {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 11px;
+}
+
+/* Bar colors — series 0 = amber/gold, series 1 = lighter gold */
+.dark-chart .default-color0.chart-bar { -fx-bar-fill: #f59e0b; }
+.dark-chart .default-color1.chart-bar { -fx-bar-fill: #fcd34d; }
+
+/* Pie chart */
+.chart-pie-label { -fx-fill: #94a3b8; -fx-font-size: 10px; }
+.chart-pie-label-line { -fx-stroke: #475569; }
+
+/* ============================================================
+   DARK TABLE STYLING
+   ============================================================ */
+.dark-table {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-table-cell-border-color: #2d3f55;
+}
+
+.dark-table .column-header-background {
+    -fx-background-color: #1a2332;
+    -fx-background-radius: 6px 6px 0 0;
+}
+
+.dark-table .column-header {
+    -fx-background-color: transparent;
+    -fx-padding: 8 6;
+    -fx-border-color: transparent;
+}
+
+.dark-table .column-header .label {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.dark-table .table-row-cell {
+    -fx-background-color: #243447;
+    -fx-border-color: transparent transparent #2d3f55 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-text-fill: #e2e8f0;
+}
+
+.dark-table .table-row-cell:odd {
+    -fx-background-color: #1e2e40;
+}
+
+.dark-table .table-row-cell:hover {
+    -fx-background-color: #2d3f55;
+}
+
+.dark-table .table-row-cell:selected {
+    -fx-background-color: #1d3a5f;
+}
+
+.dark-table .table-cell {
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 12px;
+    -fx-padding: 6 8;
+}
+
+/* Status badges */
+.badge {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 2 8;
+    -fx-background-radius: 10px;
+}
+
+.badge-paid {
+    -fx-background-color: #14532d;
+    -fx-text-fill: #4ade80;
+}
+
+.badge-approved {
+    -fx-background-color: #1e3a5f;
+    -fx-text-fill: #60a5fa;
+}
+
+.badge-draft {
+    -fx-background-color: #292524;
+    -fx-text-fill: #fbbf24;
+}
+
+.badge-cancelled {
+    -fx-background-color: #450a0a;
+    -fx-text-fill: #f87171;
+}
+
+/* ============================================================
+   QUICK ACTIONS & BUTTONS
+   ============================================================ */
+.quick-action-btn {
+    -fx-background-color: #1a2332;
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 12px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 14;
+    -fx-background-radius: 7px;
+    -fx-cursor: hand;
+    -fx-border-color: #2d3f55;
+    -fx-border-radius: 7px;
+    -fx-border-width: 1px;
+}
+
+.quick-action-btn:hover {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #2563eb;
+}
+
+.btn-view-all {
+    -fx-background-color: transparent;
+    -fx-text-fill: #60a5fa;
+    -fx-font-size: 11px;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-padding: 4 0;
+}
+
+.btn-view-all:hover {
+    -fx-text-fill: #93c5fd;
+}

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.payroll.controller.PayrollProcessingController"
+      spacing="14" style="-fx-padding: 4;">
+
+    <!-- TOP PAYROLL RUNS CARD -->
+    <VBox styleClass="card" prefHeight="260" spacing="10">
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                <Label text="Monthly Payroll Runs" style="-fx-font-weight: bold; -fx-font-size: 15; -fx-text-fill: -color-text-main;"/>
+                <Label text="Batch payroll execution, compliance reviews, approvals, and disbursement status" style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;"/>
+            </VBox>
+            
+            <Button text="⚡ Process Monthly Payroll" onAction="#showProcessPayrollDialog" styleClass="btn-primary" prefHeight="38"/>
+        </HBox>
+
+        <TableView fx:id="tblPayrollRuns" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colRunPeriod" text="Period" prefWidth="120"/>
+                <TableColumn fx:id="colRunDate" text="Run Date" prefWidth="100"/>
+                <TableColumn fx:id="colRunHeadcount" text="Headcount" prefWidth="80"/>
+                <TableColumn fx:id="colRunGross" text="Total Gross ($)" prefWidth="120"/>
+                <TableColumn fx:id="colRunDeductions" text="Deductions ($)" prefWidth="120"/>
+                <TableColumn fx:id="colRunNet" text="Net Payable ($)" prefWidth="130"/>
+                <TableColumn fx:id="colRunStatus" text="Status" prefWidth="100"/>
+                <TableColumn fx:id="colRunActions" text="Run Actions" prefWidth="250"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+    </VBox>
+
+    <!-- BOTTOM ITEMIZED RECORDS & PAYSLIPS CARD -->
+    <VBox styleClass="card" VBox.vgrow="ALWAYS" spacing="12">
+        <HBox alignment="CENTER_LEFT" spacing="16">
+            <VBox spacing="2">
+                <Label fx:id="lblRegisterTitle" text="Itemized Payroll Register (Select a run above)"
+                       style="-fx-font-weight: bold; -fx-font-size: 14; -fx-text-fill: -color-text-main;"/>
+                <Label fx:id="lblRegisterSubtitle" text="Historical calculation breakdown and individual employee payslips"
+                       style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;"/>
+            </VBox>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button fx:id="btnExportRegisterCsv" text="📥 Export Register CSV" onAction="#handleExportRegisterCsv" styleClass="btn-secondary" prefHeight="34"/>
+        </HBox>
+
+        <TableView fx:id="tblPayrollRecords" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colRecCode" text="Emp ID" prefWidth="85"/>
+                <TableColumn fx:id="colRecName" text="Employee Name" prefWidth="150"/>
+                <TableColumn fx:id="colRecDept" text="Department" prefWidth="130"/>
+                <TableColumn fx:id="colRecDays" text="Days (Payable/Work)" prefWidth="130"/>
+                <TableColumn fx:id="colRecGross" text="Gross Pay ($)" prefWidth="110"/>
+                <TableColumn fx:id="colRecPf" text="PF ($)" prefWidth="85"/>
+                <TableColumn fx:id="colRecTax" text="Tax/TDS ($)" prefWidth="95"/>
+                <TableColumn fx:id="colRecLoss" text="Unpaid Loss ($)" prefWidth="100"/>
+                <TableColumn fx:id="colRecDeductions" text="Total Deduct ($)" prefWidth="110"/>
+                <TableColumn fx:id="colRecNet" text="Net Salary ($)" prefWidth="120"/>
+                <TableColumn fx:id="colRecActions" text="Payslip &amp; Adjustments" prefWidth="180"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+    </VBox>
+
+</VBox>

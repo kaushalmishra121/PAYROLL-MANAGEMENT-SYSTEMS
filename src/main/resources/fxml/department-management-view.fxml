@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.payroll.controller.DepartmentManagementController"
+      spacing="16" style="-fx-padding: 4;">
+
+    <!-- LEFT COLUMN: DEPARTMENTS -->
+    <VBox styleClass="card" HBox.hgrow="ALWAYS" prefWidth="500" spacing="12">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                <Label text="Departments" style="-fx-font-weight: bold; -fx-font-size: 15; -fx-text-fill: -color-text-main;"/>
+                <Label text="Organizational business units and divisions" style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;"/>
+            </VBox>
+            <Button text="➕ New Department" onAction="#showAddDepartmentDialog" styleClass="btn-primary, btn-sm"/>
+        </HBox>
+
+        <TableView fx:id="tblDepartments" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colDeptCode" text="Code" prefWidth="80"/>
+                <TableColumn fx:id="colDeptName" text="Department Name" prefWidth="180"/>
+                <TableColumn fx:id="colDeptEmployees" text="Headcount" prefWidth="80"/>
+                <TableColumn fx:id="colDeptStatus" text="Status" prefWidth="80"/>
+                <TableColumn fx:id="colDeptActions" text="Actions" prefWidth="140"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+    </VBox>
+
+    <!-- RIGHT COLUMN: DESIGNATIONS -->
+    <VBox styleClass="card" HBox.hgrow="ALWAYS" prefWidth="500" spacing="12">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                <Label text="Designations &amp; Pay Bands" style="-fx-font-weight: bold; -fx-font-size: 15; -fx-text-fill: -color-text-main;"/>
+                <Label text="Job positions and salary ranges" style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;"/>
+            </VBox>
+            <Button text="➕ New Designation" onAction="#showAddDesignationDialog" styleClass="btn-primary, btn-sm"/>
+        </HBox>
+
+        <TableView fx:id="tblDesignations" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colDesigCode" text="Code" prefWidth="90"/>
+                <TableColumn fx:id="colDesigTitle" text="Title" prefWidth="150"/>
+                <TableColumn fx:id="colDesigDept" text="Department" prefWidth="130"/>
+                <TableColumn fx:id="colDesigPayBand" text="Pay Band ($)" prefWidth="140"/>
+                <TableColumn fx:id="colDesigActions" text="Actions" prefWidth="140"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+    </VBox>
+
+</HBox>

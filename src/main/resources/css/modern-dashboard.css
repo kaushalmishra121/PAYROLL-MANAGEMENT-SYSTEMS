@@ -1,0 +1,284 @@
+/* ==========================================================================
+   Modern Payroll Management System Dashboard CSS
+   Palette:
+   - Charcoal Topbar: #122329
+   - Emerald Green: #00C399
+   - Soft Green Tint: #E6F9F4
+   - Electric Blue: #00A3FF
+   - Amber Gold: #F5A623
+   - Light Grey Canvas: #F4F6F8
+   ========================================================================== */
+
+.modern-root {
+    -fx-background-color: #F4F6F8;
+    -fx-font-family: "Segoe UI", "Inter", -apple-system, sans-serif;
+}
+
+/* TOPBAR */
+.topbar {
+    -fx-background-color: #122329;
+    -fx-padding: 14 32;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.brand-title {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 20px;
+    -fx-font-weight: 900;
+    -fx-letter-spacing: 1px;
+}
+
+.search-field {
+    -fx-background-color: #1A323B;
+    -fx-text-fill: #E2E8F0;
+    -fx-prompt-text-fill: #64748B;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-padding: 8 16 8 36;
+    -fx-font-size: 13px;
+    -fx-pref-width: 380px;
+}
+
+.search-field:focused {
+    -fx-background-color: #213C47;
+    -fx-border-color: #00C399;
+    -fx-border-width: 1px;
+}
+
+.profile-name {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.profile-school {
+    -fx-text-fill: #94A3B8;
+    -fx-font-size: 11px;
+}
+
+.profile-avatar-circle {
+    -fx-background-color: #00C399;
+    -fx-background-radius: 20px;
+    -fx-alignment: CENTER;
+}
+
+/* FLOATING SUB-NAV BAR */
+.floating-subnav {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 14px;
+    -fx-padding: 8 16;
+    -fx-effect: dropshadow(three-pass-box, rgba(18, 35, 41, 0.08), 16, 0, 0, 4);
+}
+
+.subnav-item {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-padding: 8 18;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.subnav-item:hover {
+    -fx-background-color: #F8FAFC;
+}
+
+.subnav-item-active {
+    -fx-background-color: #E6F9F4;
+    -fx-background-radius: 10px;
+    -fx-padding: 8 18;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.subnav-title-active {
+    -fx-text-fill: #00C399;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.subnav-sub-active {
+    -fx-text-fill: #00A380;
+    -fx-font-size: 10px;
+}
+
+.subnav-title {
+    -fx-text-fill: #1E293B;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.subnav-sub {
+    -fx-text-fill: #94A3B8;
+    -fx-font-size: 10px;
+}
+
+/* CARDS */
+.modern-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 12px;
+    -fx-padding: 18;
+    -fx-effect: dropshadow(three-pass-box, rgba(18, 35, 41, 0.05), 12, 0, 0, 2);
+}
+
+.card-title {
+    -fx-text-fill: #1E293B;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.card-subtitle {
+    -fx-text-fill: #94A3B8;
+    -fx-font-size: 11px;
+}
+
+/* STAT VALUES */
+.stat-value-blue {
+    -fx-text-fill: #00A3FF;
+    -fx-font-size: 24px;
+    -fx-font-weight: 800;
+}
+
+.stat-value-green {
+    -fx-text-fill: #00C399;
+    -fx-font-size: 24px;
+    -fx-font-weight: 800;
+}
+
+.stat-value-amber {
+    -fx-text-fill: #F5A623;
+    -fx-font-size: 24px;
+    -fx-font-weight: 800;
+}
+
+/* GRADE CARDS (3x3 GRID) */
+.grade-chip {
+    -fx-background-color: #F8FAFC;
+    -fx-background-radius: 8px;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-padding: 10 12;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.grade-chip:hover {
+    -fx-background-color: #F1F5F9;
+    -fx-border-color: #CBD5E1;
+}
+
+.grade-name {
+    -fx-text-fill: #64748B;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.grade-count {
+    -fx-text-fill: #1E293B;
+    -fx-font-size: 17px;
+    -fx-font-weight: 800;
+}
+
+/* LEAVE TABLE */
+.leave-table {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.leave-table .column-header-background {
+    -fx-background-color: #00C399;
+    -fx-background-radius: 8px 8px 0 0;
+}
+
+.leave-table .column-header {
+    -fx-background-color: #00C399;
+    -fx-padding: 8 6;
+}
+
+.leave-table .column-header .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.leave-table .table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #F1F5F9;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 4 0;
+}
+
+.leave-table .table-row-cell:odd {
+    -fx-background-color: #FAFAFA;
+}
+
+.leave-table .table-row-cell:hover {
+    -fx-background-color: #F0FDF4;
+}
+
+.btn-adjust {
+    -fx-background-color: #FEE2E2;
+    -fx-text-fill: #EF4444;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-padding: 4 12;
+    -fx-cursor: hand;
+}
+
+.btn-adjust:hover {
+    -fx-background-color: #FECACA;
+    -fx-text-fill: #DC2626;
+}
+
+/* RIGHT PANEL BUTTONS & WIDGETS */
+.btn-generate {
+    -fx-background-color: #00C399;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-padding: 10 18;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 195, 153, 0.3), 8, 0, 0, 3);
+}
+
+.btn-generate:hover {
+    -fx-background-color: #00B08A;
+}
+
+.btn-add-emp-card {
+    -fx-background-color: #FFFBEB;
+    -fx-border-color: #FDE68A;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-padding: 16;
+    -fx-cursor: hand;
+}
+
+.btn-add-emp-card:hover {
+    -fx-background-color: #FEF3C7;
+}
+
+/* COMBOBOX STYLING */
+.modern-combo {
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-font-size: 12px;
+}
+
+/* BAR CHART STYLES */
+.chart-bar {
+    -fx-bar-fill: #00A3FF;
+    -fx-background-radius: 4px 4px 0 0;
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-vertical-grid-lines, .chart-horizontal-grid-lines {
+    -fx-stroke: #F1F5F9;
+}

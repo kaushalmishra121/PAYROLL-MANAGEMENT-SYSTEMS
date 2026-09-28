@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.payroll.controller.ModernDashboardController"
+      styleClass="modern-root" stylesheets="@../css/modern-dashboard.css"
+      spacing="0" prefWidth="1360.0" prefHeight="900.0">
+
+    <!-- 1. DARK CHARCOAL TOPBAR (#122329) -->
+    <HBox alignment="CENTER_LEFT" spacing="24" styleClass="topbar">
+        <!-- Left: PAYROLL Logo + Pie Chart Icon -->
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <StackPane prefWidth="38" prefHeight="38" style="-fx-background-color: #00C399; -fx-background-radius: 10px;">
+                <Label text="◕" style="-fx-font-size: 20px; -fx-text-fill: white;"/>
+            </StackPane>
+            <VBox alignment="CENTER_LEFT" spacing="0">
+                <Label text="PAYROLL" styleClass="brand-title"/>
+                <Label text="MANAGEMENT SYSTEM" style="-fx-text-fill: #00C399; -fx-font-size: 9px; -fx-font-weight: bold; -fx-letter-spacing: 2px;"/>
+            </VBox>
+        </HBox>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <!-- Middle: Subtle Dark Search Bar -->
+        <StackPane alignment="CENTER_LEFT">
+            <TextField fx:id="txtSearch" promptText="Search employee, ID, department..." styleClass="search-field"/>
+            <Label text="🔍" style="-fx-text-fill: #64748B; -fx-padding: 0 0 0 12;"/>
+        </StackPane>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <!-- Right: Admin Profile Avatar & Info -->
+        <HBox alignment="CENTER_RIGHT" spacing="12">
+            <StackPane prefWidth="38" prefHeight="38" styleClass="profile-avatar-circle">
+                <Label text="SA" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px;"/>
+            </StackPane>
+            <VBox alignment="CENTER_LEFT" spacing="1">
+                <Label text="School Admin" styleClass="profile-name"/>
+                <Label text="Champions School &amp; College" styleClass="profile-school"/>
+            </VBox>
+            <Label text="▾" style="-fx-text-fill: #94A3B8; -fx-font-size: 14px; -fx-padding: 0 0 0 4;"/>
+        </HBox>
+    </HBox>
+
+    <!-- MAIN SCROLLABLE CONTENT BODY -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                style="-fx-background-color: transparent; -fx-background: transparent; -fx-padding: 0;">
+        <VBox spacing="20" style="-fx-padding: 16 32 32 32;">
+
+            <!-- 2. FLOATING SUB-NAVIGATION BAR (Elevated White Rounded Card) -->
+            <HBox spacing="10" alignment="CENTER_LEFT" styleClass="floating-subnav">
+                <!-- Dashboard (Active) -->
+                <HBox spacing="10" alignment="CENTER_LEFT" onMouseClicked="#onNavDashboard" styleClass="subnav-item-active" HBox.hgrow="ALWAYS">
+                    <Label text="📊" style="-fx-font-size: 18px;"/>
+                    <VBox spacing="1">
+                        <Label text="Dashboard" styleClass="subnav-title-active"/>
+                        <Label text="Recent Updates &amp; Reports" styleClass="subnav-sub-active"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Employees -->
+                <HBox spacing="10" alignment="CENTER_LEFT" onMouseClicked="#onNavEmployees" styleClass="subnav-item" HBox.hgrow="ALWAYS">
+                    <Label text="👥" style="-fx-font-size: 18px;"/>
+                    <VBox spacing="1">
+                        <Label text="Employees" styleClass="subnav-title"/>
+                        <Label text="List &amp; New Entries" styleClass="subnav-sub"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Salary -->
+                <HBox spacing="10" alignment="CENTER_LEFT" onMouseClicked="#onNavSalary" styleClass="subnav-item" HBox.hgrow="ALWAYS">
+                    <Label text="📄" style="-fx-font-size: 18px;"/>
+                    <VBox spacing="1">
+                        <Label text="Salary" styleClass="subnav-title"/>
+                        <Label text="Salary Report" styleClass="subnav-sub"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Allowances & Deductions -->
+                <HBox spacing="10" alignment="CENTER_LEFT" onMouseClicked="#onNavAllowDed" styleClass="subnav-item" HBox.hgrow="ALWAYS">
+                    <Label text="➕" style="-fx-font-size: 18px;"/>
+                    <VBox spacing="1">
+                        <Label text="Allow. &amp; Ded" styleClass="subnav-title"/>
+                        <Label text="Allowances &amp; Deductions" styleClass="subnav-sub"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Administration -->
+                <HBox spacing="10" alignment="CENTER_LEFT" onMouseClicked="#onNavAdmin" styleClass="subnav-item" HBox.hgrow="ALWAYS">
+                    <Label text="⚙" style="-fx-font-size: 18px;"/>
+                    <VBox spacing="1">
+                        <Label text="Administration" styleClass="subnav-title"/>
+                        <Label text="Department, Grade &amp; Settings" styleClass="subnav-sub"/>
+                    </VBox>
+                </HBox>
+            </HBox>
+
+            <!-- 3. TOP METRIC STAT CARDS (4 Columns Grid) -->
+            <GridPane hgap="16" vgap="16">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="25"/>
+                </columnConstraints>
+
+                <!-- Card 1: Total Employee -->
+                <VBox styleClass="modern-card" spacing="8" GridPane.columnIndex="0" prefHeight="130">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <VBox spacing="3" HBox.hgrow="ALWAYS">
+                            <Label text="Total Employee" styleClass="card-title"/>
+                            <Label fx:id="lblTotalEmployees" text="121 Employees" styleClass="stat-value-blue"/>
+                        </VBox>
+                        <StackPane prefWidth="38" prefHeight="38" style="-fx-background-color: #E0F2FE; -fx-background-radius: 19px;">
+                            <Label text="👥" style="-fx-font-size: 16px;"/>
+                        </StackPane>
+                    </HBox>
+                    <Label text="Total Number Of Employee" styleClass="card-subtitle"/>
+                </VBox>
+
+                <!-- Card 2: Salary Per Month -->
+                <VBox styleClass="modern-card" spacing="8" GridPane.columnIndex="1" prefHeight="130">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <VBox spacing="3" HBox.hgrow="ALWAYS">
+                            <Label text="Salary Per Month" styleClass="card-title"/>
+                            <Label fx:id="lblSalaryPerMonth" text="11,52,962 BDT" styleClass="stat-value-green"/>
+                        </VBox>
+                        <StackPane prefWidth="38" prefHeight="38" style="-fx-background-color: #DCFCE7; -fx-background-radius: 19px;">
+                            <Label text="💵" style="-fx-font-size: 16px;"/>
+                        </StackPane>
+                    </HBox>
+                    <Label text="Current Total Salary Per Month" styleClass="card-subtitle"/>
+                </VBox>
+
+                <!-- Card 3: Provident Fund -->
+                <VBox styleClass="modern-card" spacing="8" GridPane.columnIndex="2" prefHeight="130">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <VBox spacing="3" HBox.hgrow="ALWAYS">
+                            <Label text="Provident Fund" styleClass="card-title"/>
+                            <Label fx:id="lblProvidentFund" text="1,20,123 BDT" styleClass="stat-value-amber"/>
+                        </VBox>
+                        <StackPane prefWidth="38" prefHeight="38" style="-fx-background-color: #FEF3C7; -fx-background-radius: 19px;">
+                            <Label text="🏦" style="-fx-font-size: 16px;"/>
+                        </StackPane>
+                    </HBox>
+                    <Label text="For 121 Employee Per Month" styleClass="card-subtitle"/>
+                </VBox>
+
+                <!-- Card 4: Grade Wise Salary Bar Chart -->
+                <VBox styleClass="modern-card" spacing="4" GridPane.columnIndex="3" prefHeight="130">
+                    <Label text="Grade Wise Salary" styleClass="card-title"/>
+                    <BarChart fx:id="chartGradeSalary" legendVisible="false" animated="false" prefHeight="80"
+                              style="-fx-padding: 0; -fx-background-color: transparent;">
+                        <xAxis>
+                            <CategoryAxis fx:id="xAxisGrade" tickLabelsVisible="true" tickMarkVisible="false"/>
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis fx:id="yAxisSalary" visible="false" tickLabelsVisible="false" opacity="0"/>
+                        </yAxis>
+                    </BarChart>
+                </VBox>
+            </GridPane>
+
+            <!-- 4. BOTTOM DASHBOARD GRID (Left: 3x3 Grade Breakdown, Center: Leave Trend, Right: Action Panels) -->
+            <GridPane hgap="16" vgap="16">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="31"/>
+                    <ColumnConstraints percentWidth="45"/>
+                    <ColumnConstraints percentWidth="24"/>
+                </columnConstraints>
+
+                <!-- LEFT COLUMN: NUMBER OF EMPLOYEE (3x3 Grade Grid) -->
+                <VBox styleClass="modern-card" spacing="14" GridPane.columnIndex="0" prefHeight="480">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <VBox spacing="2" HBox.hgrow="ALWAYS">
+                            <Label text="Number of Employee" styleClass="card-title"/>
+                            <Label text="Department &amp; Grade Wise" styleClass="card-subtitle"/>
+                        </VBox>
+                        <ComboBox fx:id="cbGradeFilter" styleClass="modern-combo" prefWidth="110"/>
+                    </HBox>
+
+                    <!-- 3x3 Cards Grid for Grade 1 through Grade 9 -->
+                    <GridPane fx:id="gridGrades" hgap="10" vgap="10" VBox.vgrow="ALWAYS">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="33.33"/>
+                            <ColumnConstraints percentWidth="33.33"/>
+                            <ColumnConstraints percentWidth="33.33"/>
+                        </columnConstraints>
+                        <!-- Dynamically filled with Grade 1..9 chips from DB -->
+                    </GridPane>
+                </VBox>
+
+                <!-- CENTER COLUMN: LEAVE TREND TABLE -->
+                <VBox styleClass="modern-card" spacing="14" GridPane.columnIndex="1" prefHeight="480">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <VBox spacing="2" HBox.hgrow="ALWAYS">
+                            <Label text="Leave Trend" styleClass="card-title"/>
+                            <Label text="Sort By Most Leave Taken" styleClass="card-subtitle"/>
+                        </VBox>
+                        <ComboBox fx:id="cbLeaveMonth" styleClass="modern-combo" prefWidth="110"/>
+                    </HBox>
+
+                    <!-- Bright Teal/Green Header Table -->
+                    <TableView fx:id="tblLeaveTrend" styleClass="leave-table" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colNo" text="No." prefWidth="42"/>
+                            <TableColumn fx:id="colName" text="Name" prefWidth="190"/>
+                            <TableColumn fx:id="colLeave" text="Leave" prefWidth="95"/>
+                            <TableColumn fx:id="colDue" text="Due" prefWidth="90"/>
+                            <TableColumn fx:id="colAction" text="Action" prefWidth="85"/>
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                        </columnResizePolicy>
+                    </TableView>
+                </VBox>
+
+                <!-- RIGHT COLUMN: ACTION PANELS -->
+                <VBox spacing="16" GridPane.columnIndex="2" prefHeight="480">
+                    <!-- Action Card 1: Generate Salary -->
+                    <VBox styleClass="modern-card" spacing="12" VBox.vgrow="ALWAYS">
+                        <VBox spacing="2">
+                            <Label text="Generate Salary" styleClass="card-title"/>
+                            <Label text="Monthly Disbursement Run" styleClass="card-subtitle"/>
+                        </VBox>
+
+                        <VBox spacing="6">
+                            <Label text="Month" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #64748B;"/>
+                            <ComboBox fx:id="cbGenMonth" maxWidth="Infinity" styleClass="modern-combo"/>
+                        </VBox>
+
+                        <VBox spacing="6">
+                            <Label text="Year" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #64748B;"/>
+                            <ComboBox fx:id="cbGenYear" maxWidth="Infinity" styleClass="modern-combo"/>
+                        </VBox>
+
+                        <Region VBox.vgrow="ALWAYS"/>
+
+                        <Button fx:id="btnGenerate" text="Generate" onAction="#handleGenerateSalary"
+                                maxWidth="Infinity" prefHeight="42" styleClass="btn-generate"/>
+                    </VBox>
+
+                    <!-- Action Card 2: Add Employee -->
+                    <VBox onMouseClicked="#handleAddEmployee" styleClass="btn-add-emp-card" spacing="10">
+                        <HBox alignment="CENTER_LEFT" spacing="14">
+                            <StackPane prefWidth="42" prefHeight="42" style="-fx-background-color: #FDE68A; -fx-background-radius: 10px;">
+                                <Label text="👤⁺" style="-fx-font-size: 20px; -fx-text-fill: #D97706;"/>
+                            </StackPane>
+                            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                <Label text="Add Employee" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #B45309;"/>
+                                <Label text="Add New Employee From Here" style="-fx-font-size: 11px; -fx-text-fill: #92400E;"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </VBox>
+
+            </GridPane>
+
+        </VBox>
+    </ScrollPane>
+
+</VBox>

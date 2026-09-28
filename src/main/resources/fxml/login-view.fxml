@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.payroll.controller.LoginController"
+           prefHeight="680.0" prefWidth="960.0"
+           style="-fx-background-color: -color-bg-base;">
+
+    <HBox alignment="CENTER" maxWidth="900" maxHeight="560" spacing="0"
+          style="-fx-background-color: white; -fx-background-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 20, 0, 0, 4);">
+        
+        <!-- Left Brand Banner -->
+        <VBox alignment="CENTER_LEFT" prefWidth="380" spacing="20"
+              style="-fx-background-color: #0f172a; -fx-background-radius: 16 0 0 16; -fx-padding: 40;">
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <StackPane prefWidth="36" prefHeight="36" style="-fx-background-color: #2563eb; -fx-background-radius: 8;">
+                    <Label text="P" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 20;"/>
+                </StackPane>
+                <Label text="PAYROLL PRO" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 20; -fx-letter-spacing: 1px;"/>
+            </HBox>
+
+            <VBox spacing="8">
+                <Label text="Enterprise Payroll Management" wrapText="true"
+                       style="-fx-text-fill: white; -fx-font-size: 24; -fx-font-weight: bold;"/>
+                <Label text="Commercial-grade payroll computation, employee governance, attendance tracking, and financial compliance."
+                       wrapText="true" style="-fx-text-fill: #94a3b8; -fx-font-size: 13; -fx-line-spacing: 4;"/>
+            </VBox>
+
+            <VBox spacing="12" style="-fx-padding: 20 0 0 0;">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="✓" style="-fx-text-fill: #10b981; -fx-font-weight: bold;"/>
+                    <Label text="Deterministic BigDecimal Calculations" style="-fx-text-fill: #cbd5e1; -fx-font-size: 12;"/>
+                </HBox>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="✓" style="-fx-text-fill: #10b981; -fx-font-weight: bold;"/>
+                    <Label text="Role-Based Access (Admin / HR)" style="-fx-text-fill: #cbd5e1; -fx-font-size: 12;"/>
+                </HBox>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="✓" style="-fx-text-fill: #10b981; -fx-font-weight: bold;"/>
+                    <Label text="Automated PDF Payslips &amp; CSV Exports" style="-fx-text-fill: #cbd5e1; -fx-font-size: 12;"/>
+                </HBox>
+            </VBox>
+        </VBox>
+
+        <!-- Right Form Panel -->
+        <VBox alignment="CENTER_LEFT" prefWidth="520" spacing="22" style="-fx-padding: 48; -fx-background-color: -color-bg-card; -fx-background-radius: 0 16 16 0;">
+            
+            <VBox spacing="6">
+                <Label text="Welcome back" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: -color-text-main;"/>
+                <Label text="Please enter your enterprise credentials to access the system." style="-fx-text-fill: -color-text-muted; -fx-font-size: 13;"/>
+            </VBox>
+
+            <!-- Error Banner -->
+            <Label fx:id="lblError" visible="false" managed="false" wrapText="true"
+                   style="-fx-background-color: #fee2e2; -fx-text-fill: #991b1b; -fx-padding: 8 12; -fx-background-radius: 6; -fx-font-size: 12;"/>
+
+            <!-- Inputs -->
+            <VBox spacing="16">
+                <VBox spacing="6">
+                    <Label text="Username or Corporate Email" style="-fx-font-weight: bold; -fx-font-size: 12; -fx-text-fill: -color-text-main;"/>
+                    <TextField fx:id="txtUsername" promptText="e.g. admin or admin@enterprise.com" prefHeight="40"/>
+                </VBox>
+
+                <VBox spacing="6">
+                    <Label text="Password" style="-fx-font-weight: bold; -fx-font-size: 12; -fx-text-fill: -color-text-main;"/>
+                    <PasswordField fx:id="txtPassword" promptText="Enter your secure password" prefHeight="40"/>
+                </VBox>
+            </VBox>
+
+            <Button fx:id="btnLogin" text="Sign In to Workspace" onAction="#handleLogin"
+                    prefHeight="42" maxWidth="Infinity" styleClass="btn-primary"/>
+
+            <!-- Quick Demo Credentials Box -->
+            <VBox spacing="8" style="-fx-background-color: #f8fafc; -fx-padding: 12; -fx-background-radius: 8; -fx-border-color: #e2e8f0; -fx-border-radius: 8;">
+                <Label text="Demo Accounts (Pre-configured):" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: #64748b;"/>
+                <HBox spacing="10">
+                    <Button text="Demo Admin" onAction="#fillAdminDemo" styleClass="btn-secondary, btn-sm"/>
+                    <Button text="Demo HR" onAction="#fillHrDemo" styleClass="btn-secondary, btn-sm"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </HBox>
+</StackPane>

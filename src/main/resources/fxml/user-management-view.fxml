@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.payroll.controller.UserManagementController"
+      spacing="16" style="-fx-padding: 4;">
+
+    <!-- USER ACCOUNTS SECTION -->
+    <VBox styleClass="card" prefHeight="300" spacing="10">
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                <Label text="System Users &amp; Role-Based Access Control" style="-fx-font-weight: bold; -fx-font-size: 15; -fx-text-fill: -color-text-main;"/>
+                <Label text="Manage administrator and HR officer accounts and access statuses" style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;"/>
+            </VBox>
+            <Button text="➕ Create User Account" onAction="#showCreateUserDialog" styleClass="btn-primary, btn-sm"/>
+        </HBox>
+
+        <TableView fx:id="tblUsers" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colUserId" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="colUsername" text="Username" prefWidth="120"/>
+                <TableColumn fx:id="colUserFullName" text="Full Name" prefWidth="160"/>
+                <TableColumn fx:id="colUserEmail" text="Corporate Email" prefWidth="180"/>
+                <TableColumn fx:id="colUserRole" text="Role" prefWidth="90"/>
+                <TableColumn fx:id="colUserStatus" text="Status" prefWidth="90"/>
+                <TableColumn fx:id="colUserActions" text="Security Actions" prefWidth="180"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+    </VBox>
+
+    <!-- AUDIT TRAIL LOG SECTION -->
+    <VBox styleClass="card" VBox.vgrow="ALWAYS" spacing="10">
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                <Label text="System Security &amp; Activity Audit Trail" style="-fx-font-weight: bold; -fx-font-size: 15; -fx-text-fill: -color-text-main;"/>
+                <Label text="Tamper-evident logs of logins, employee changes, approvals, and payroll adjustments" style="-fx-text-fill: -color-text-muted; -fx-font-size: 11;"/>
+            </VBox>
+            <Button text="🔄 Refresh Logs" onAction="#loadAuditLogs" styleClass="btn-secondary, btn-sm"/>
+        </HBox>
+
+        <TableView fx:id="tblAuditLogs" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colAuditTime" text="Timestamp" prefWidth="140"/>
+                <TableColumn fx:id="colAuditUser" text="Operator" prefWidth="110"/>
+                <TableColumn fx:id="colAuditAction" text="Action" prefWidth="140"/>
+                <TableColumn fx:id="colAuditEntity" text="Target" prefWidth="100"/>
+                <TableColumn fx:id="colAuditDetails" text="Activity Details" prefWidth="380"/>
+                <TableColumn fx:id="colAuditIp" text="IP Address" prefWidth="90"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+    </VBox>
+
+</VBox>

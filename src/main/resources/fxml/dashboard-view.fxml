@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.payroll.controller.DashboardController"
+      spacing="16" style="-fx-background-color: transparent; -fx-padding: 20 24 24 24;">
+
+    <!-- ===== ROW 1: 4 KPI STAT CARDS ===== -->
+    <GridPane hgap="14" vgap="14">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="25"/>
+            <ColumnConstraints percentWidth="25"/>
+            <ColumnConstraints percentWidth="25"/>
+            <ColumnConstraints percentWidth="25"/>
+        </columnConstraints>
+
+        <!-- Card 1: Total Employees -->
+        <VBox styleClass="kpi-card" spacing="6" GridPane.columnIndex="0">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="TOTAL EMPLOYEES" styleClass="kpi-label"/>
+                    <Label fx:id="lblTotalEmployees" text="0" styleClass="kpi-value-big"/>
+                </VBox>
+                <StackPane prefWidth="40" prefHeight="40" styleClass="kpi-icon-box-blue">
+                    <Label text="👥" style="-fx-font-size:18px;"/>
+                </StackPane>
+            </HBox>
+            <Label fx:id="lblActiveInactive" text="Active: 0  |  Inactive: 0" styleClass="kpi-sub"/>
+        </VBox>
+
+        <!-- Card 2: This Month Payroll -->
+        <VBox styleClass="kpi-card" spacing="6" GridPane.columnIndex="1">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="THIS MONTH PAYROLL" styleClass="kpi-label"/>
+                    <Label fx:id="lblCurrentMonthPayroll" text="\$0.00" styleClass="kpi-value-big"/>
+                </VBox>
+                <StackPane prefWidth="40" prefHeight="40" styleClass="kpi-icon-box-green">
+                    <Label text="💰" style="-fx-font-size:18px;"/>
+                </StackPane>
+            </HBox>
+            <Label text="Calculated net payable" styleClass="kpi-sub"/>
+        </VBox>
+
+        <!-- Card 3: Pending Approvals -->
+        <VBox styleClass="kpi-card" spacing="6" GridPane.columnIndex="2">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="PENDING APPROVALS" styleClass="kpi-label"/>
+                    <Label fx:id="lblPendingApprovals" text="0" styleClass="kpi-value-big"/>
+                </VBox>
+                <StackPane prefWidth="40" prefHeight="40" styleClass="kpi-icon-box-amber">
+                    <Label text="⏳" style="-fx-font-size:18px;"/>
+                </StackPane>
+            </HBox>
+            <Label text="Draft payrolls awaiting review" styleClass="kpi-sub"/>
+        </VBox>
+
+        <!-- Card 4: Total Disbursements -->
+        <VBox styleClass="kpi-card" spacing="6" GridPane.columnIndex="3">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="TOTAL DISBURSEMENTS" styleClass="kpi-label"/>
+                    <Label fx:id="lblTotalPaid" text="\$0.00" styleClass="kpi-value-big"/>
+                </VBox>
+                <StackPane prefWidth="40" prefHeight="40" styleClass="kpi-icon-box-purple">
+                    <Label text="✅" style="-fx-font-size:18px;"/>
+                </StackPane>
+            </HBox>
+            <Label fx:id="lblUnpaidSubtext" text="Pending/Approved: $0.00" styleClass="kpi-sub"/>
+        </VBox>
+    </GridPane>
+
+    <!-- ===== ROW 2: CHARTS ===== -->
+    <GridPane hgap="14" vgap="14" VBox.vgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="60"/>
+            <ColumnConstraints percentWidth="40"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="260" prefHeight="280"/>
+        </rowConstraints>
+
+        <!-- Left: Monthly Payroll Trends Bar Chart -->
+        <VBox styleClass="dash-card" spacing="10" GridPane.columnIndex="0">
+            <Label text="Monthly Payroll Trends (Gross vs Net)" styleClass="card-heading"/>
+            <BarChart fx:id="chartPayrollTrends" VBox.vgrow="ALWAYS"
+                      legendVisible="true" animated="true"
+                      styleClass="dark-chart">
+                <xAxis>
+                    <CategoryAxis fx:id="xAxisTrend" label="Payroll Period"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis fx:id="yAxisTrend" label="Amount ($)"/>
+                </yAxis>
+            </BarChart>
+        </VBox>
+
+        <!-- Right: Department Pie Chart -->
+        <VBox styleClass="dash-card" spacing="10" GridPane.columnIndex="1">
+            <Label text="Department Workforce Distribution" styleClass="card-heading"/>
+            <PieChart fx:id="chartDeptDistribution" VBox.vgrow="ALWAYS"
+                      legendVisible="true" animated="true"
+                      labelsVisible="false"/>
+        </VBox>
+    </GridPane>
+
+    <!-- ===== ROW 3: RECENT PAYROLL RUNS + QUICK ACTIONS ===== -->
+    <GridPane hgap="14" vgap="14">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="65"/>
+            <ColumnConstraints percentWidth="35"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="200" prefHeight="220"/>
+        </rowConstraints>
+
+        <!-- Left: Recent Payroll Runs table -->
+        <VBox styleClass="dash-card" spacing="10" GridPane.columnIndex="0">
+            <HBox alignment="CENTER_LEFT">
+                <Label text="Recent Payroll Runs" styleClass="card-heading" HBox.hgrow="ALWAYS"/>
+                <Button text="View All Runs" onAction="#navigateToPayroll" styleClass="btn-view-all"/>
+            </HBox>
+            <TableView fx:id="tblRecentRuns" VBox.vgrow="ALWAYS" styleClass="dark-table">
+                <columns>
+                    <TableColumn fx:id="colRunPeriod"    text="Period"       prefWidth="120"/>
+                    <TableColumn fx:id="colRunDate"      text="Run Date"     prefWidth="100"/>
+                    <TableColumn fx:id="colRunEmployees" text="Headcount"    prefWidth="90"/>
+                    <TableColumn fx:id="colRunNetPay"    text="Net Pay ($)"  prefWidth="120"/>
+                    <TableColumn fx:id="colRunStatus"    text="Status"       prefWidth="90"/>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+            </TableView>
+        </VBox>
+
+        <!-- Right: Quick Actions -->
+        <VBox styleClass="dash-card" spacing="12" GridPane.columnIndex="1">
+            <Label text="Quick Actions" styleClass="card-heading"/>
+
+            <Button text="+ Register New Employee" onAction="#navigateToAddEmployee"
+                    styleClass="quick-action-btn" maxWidth="Infinity"/>
+            <Button text="▶ Run Payroll" onAction="#navigateToPayroll"
+                    styleClass="quick-action-btn" maxWidth="Infinity"/>
+            <Button text="📄 View Reports" onAction="#navigateToReports"
+                    styleClass="quick-action-btn" maxWidth="Infinity"/>
+            <Button text="✎ Leave Requests" onAction="#navigateToLeaves"
+                    styleClass="quick-action-btn" maxWidth="Infinity"/>
+        </VBox>
+    </GridPane>
+
+</VBox>
